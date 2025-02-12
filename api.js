@@ -51,14 +51,16 @@ async function createProduct (req, res) {
     res.json(req.body)
 }
 
-async function deleteProduct(productId) {
-    console.log(`Product with ID ${productId} has been deleted.`)
-    return { status: 202, message: 'Product deleted successfully' }
+const deleteProduct = (req, res) => {
+  const productId = req.params.id
+  console.log(`Product with ID ${productId} deleted.`)
+  res.status(202).json({ message: `Product ${productId} deletion accepted.` })
 }
 
-async function updateProduct(productId, updatedData) {
-    console.log(`Product with ID ${productId} has been updated.`)
-    return { status: 200, message: 'Product updated successfully' }
+const updateProduct = (req, res) => {
+  const productId = req.params.id
+  console.log(`Product with ID ${productId} updated.`)
+  res.status(200).json({ message: `Product ${productId} update accepted.` })
 }
   
   module.exports = autoCatch({
